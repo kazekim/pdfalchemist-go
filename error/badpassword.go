@@ -4,7 +4,7 @@
 
 package error
 
-const badPasswordSerialVersionUID = -4333706268155063964
+const badPasswordSerialVersionUID = "-4333706268155063964"
 
 type BadPasswordError struct {
 	message string
