@@ -4,12 +4,15 @@
 
 package xml
 
+import (
+	"fmt"
+)
 
-func escapeXML(s string, onlyASCII bool) string {
+func EscapeXML(s string, onlyASCII bool) string {
 
 	var sb string
 	for _, r := range s {
-		c := string(r)
+		c := string(int64(r))
 
 		switch c {
 		case "<":
@@ -28,16 +31,14 @@ func escapeXML(s string, onlyASCII bool) string {
 				( r >= 0xE000 && r <= 0xFFFD) ||
 				( r >= 0x10000 && r <= 0x10FFFF) {
 				if onlyASCII && r > 127 {
-					sb = sb + "&#" + r + ";"
+					v := fmt.Sprint(r)
+					sb = sb + "&#" + v + ";"
 				}else{
 					sb = sb + c
 				}
 			}
 		}
-		cs = append(cs, c)
 	}
 
-	len := len(cs)
-
-	for
+	return sb
 }
